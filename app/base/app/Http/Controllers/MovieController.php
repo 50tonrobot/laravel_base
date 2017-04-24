@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Movie;
 
 class MovieController extends Controller
 {
@@ -13,7 +14,8 @@ class MovieController extends Controller
      */
     public function index()
     {
-        //
+        $movies = Movie::all();//
+        return view('movie.home',compact('movies'));
     }
 
     /**
@@ -23,7 +25,7 @@ class MovieController extends Controller
      */
     public function create()
     {
-        //
+      return view('movie.create');
     }
 
     /**
@@ -34,7 +36,23 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      $this->validate($request,[
+        'Title' => 'required',
+        'Format'=> 'required',
+        'Length'=> 'integer',
+        'Year'  => 'integer',
+        'Rating'=> 'integer',
+      ]);
+      //creates a movie record
+      $movie = new Movie;
+      $movie->user_id = 1;
+      $movie->Title = $request->Title;
+      $movie->Format = $request->Format;
+      $movie->Length = $request->Length;
+      $movie->Year = $request->Year;
+      $movie->Rating = $request->Rating;
+      $movie->save();
+      //return redirect('movie');
     }
 
     /**
@@ -45,6 +63,8 @@ class MovieController extends Controller
      */
     public function show($id)
     {
+        $movie = Movies::find($id);
+        return view('movie.show',compact('movie'));
         //
     }
 
