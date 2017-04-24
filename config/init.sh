@@ -10,4 +10,6 @@ rm -rf /app/base/.env.example
 mv /home/env /app/base/.env
 cd /app/base
 php artisan key:generate
+php artisan make:auth
+php artisan migrate
 php artisan serve --host=0.0.0.0 --port=80
