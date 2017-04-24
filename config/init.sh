@@ -4,12 +4,12 @@ php -r "if (hash_file('SHA384', 'composer-setup.php') === '669656bab3166a7aff8a7
 php composer-setup.php;
 php -r "unlink('composer-setup.php');";
 mv composer.phar /usr/local/bin/composer;
-cd /app
-composer create-project --prefer-dist laravel/laravel base --no-plugins --no-scripts;
-rm -rf /app/base/.env.example
-mv /home/env /app/base/.env
+#cd /app
+#composer create-project --prefer-dist laravel/laravel base --no-plugins --no-scripts;
+#rm -rf /app/base/.env.example
+#mv /home/env /app/base/.env
 cd /app/base
 php artisan key:generate
-php artisan make:auth
+#php artisan make:auth
 php artisan migrate
 php artisan serve --host=0.0.0.0 --port=80
