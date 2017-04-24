@@ -1,0 +1,30 @@
+version: '2'
+services:
+  demo:
+    build: .
+    depends_on:
+      - mysql
+    command: ["/usr/local/bin/wait-for-mysql.sh", "laravel_mysql", "/usr/local/bin/init.sh"]
+    volumes:
+      - ./app:/app
+    container_name: laravel_base
+    ports:
+      - "80:80"
+    environment:
+      VIRTUAL_HOST: laravelapp.com
+    tty: true
+  mysql:
+    container_name: laravel_mysql
+    image: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: dTRKn3JPWbAAxRE42uE3dkFaJOC7nuT9
+      MYSQL_DATABASE: laravel_app
+      MYSQL_USER: laravel_app_user
+      MYSQL_PASSWORD: JGx05CWMKBmCWit7xfZjbrkYlMwX1b2F
+#  memcache:
+#    container_name: sstest_memcache
+#    image: memcached
+#    ports:
+#      - "11211:11211"
