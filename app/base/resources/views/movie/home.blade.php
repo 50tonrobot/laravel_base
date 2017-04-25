@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class='col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2'>
+<div class='col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 well'>
   @if(session()->has('message'))
     <div class='well'>{{ session()->get('message') }}</div>
   @endif
