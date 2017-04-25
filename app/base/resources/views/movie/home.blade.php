@@ -1,28 +1,41 @@
 @extends('layouts.app')
 
 @section('content')
-
-<div class='col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 well'>
+<div class='well col-sm-10 col-sm-offset-1 col-xs-12 container conatiner-fluid'>
   @if(session()->has('message'))
     <div class='well'>{{ session()->get('message') }}</div>
   @endif
   <h1>My Movies <a href='/movie/create' class='btn btn-sm btn-info pull-right'>Add Movie</a></h1>
 @if ($movies->total())
-    <ul class='movies-list list-group'>
+  <div class="table-responsive">
+    <table data-toggle="table" class="table">
+      <thead>
+        <tr>
+          <th data-field="Title" data-sortable="true">Title</th>
+          <th data-field="Year" data-sortable="true">Year</th>
+          <th data-field="Rating" data-sortable="true" class="hidden-xs">Rating</th>
+          <th data-field="Length" data-sortable="true" class="hidden-xs hidden-sm">Length</th>
+          <th data-field="Format" data-sortable="true" class="hidden-xs hidden-sm">Format</th>
+          <th data-sortable="false">Edit</th>
+          <th data-sortable="false">Delete</th>
+        </tr>
+      </thead>
+      <tbody>
 @foreach ($movies as $movie)
-      <li class='list-group-item editable' data-movie-id='{{ $movie->id }}'>
-        <a href="/movie/{{$movie->id}}">
-          <span class='movie-title'>{{$movie->Title}}</span>
-          <span class='movie-title'>({{$movie->Year}})</span>
-          <span class='movie-title'>({{$movie->Rating}})</span>
-        </a>
-        <span class="glyphicon glyphicon-trash pull-right" data-movie-id="{{$movie->id}}" onclick="this.submit();"></span>
-        <a href="/movie/{{$movie->id}}/edit">
-          <span class="glyphicon glyphicon-pencil pull-right"></span>
-        </a>
-      </li>
+        <tr data-movie-id='{{ $movie->id }}'>
+          <td><a href="/movie/{{$movie->id}}"><span class='movie-title'>{{$movie->Title}}</span></a></td>
+          <td><span class='movie-title'>({{$movie->Year}})</span></td>
+          <td class="hidden-xs"><span class='movie-title'>({{$movie->Rating}})</span></td>
+          <td class="hidden-xs hidden-sm"><span class='movie-title'>({{$movie->Length}})</span></td>
+          <td class="hidden-xs hidden-sm"><span class='movie-title'>({{$movie->Format}})</span></td>
+          <td><a href="/movie/{{$movie->id}}/edit" class="btn"><span class="glyphicon glyphicon-pencil"></span></a></td>
+          <td><span class="glyphicon glyphicon-trash btn" data-movie-id="{{$movie->id}}"></span></td>
+        </tr>
+
 @endforeach
-    </ul>
+      </tbody>
+    </table>
+  </div>
 {!! $movies->links() !!}
 @else
     <div>You have no Movies in your collection, yet.</div>

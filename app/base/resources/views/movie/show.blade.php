@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-  <div class='well col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2'>
+  <div class='well col-sm-10 col-sm-offset-1 col-xs-12 container conatiner-fluid'>
     <h1>{{ $movie->Title }}</h1>
     <div>{{ $movie->Year }}</div>
     <div>{{ $movie->Format }}</div>
