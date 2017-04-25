@@ -124,4 +124,8 @@ class MovieController extends Controller
         session()->flash('message',"Deleted Movie: {$movie->Title} ({$movie->Year})");
         return redirect('/movie');
     }
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 }
