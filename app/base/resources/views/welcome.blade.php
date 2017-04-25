@@ -70,6 +70,28 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+            #film_button_container {
+              font-size: 200px;
+              color: #bbb;
+              text-shadow: 15px 15px 15px #000;
+              text-decoration: none;
+              -webkit-transition: text-shadow 2s; /* For Safari 3.1 to 6.0 */
+              transition: text-shadow 2s;
+            }
+
+            #enter_button {
+                font-size: 80px;
+                display: block;
+                font-family: Baskerville;
+                color:lightgreen;
+                position: relative;
+                top: -35px;
+            }
+
+            #film_button, #enter_button {
+              line-height:0;
+            }
+
         </style>
         <link href="{{ asset('css/theme_override.css') }}" rel="stylesheet">
     </head>
@@ -89,8 +111,23 @@
             @endif
 
             <div class="content">
-
+                <a id='film_button_container' href='/movie'>
+                  <i id='film_button' class="glyphicon glyphicon-film"></i>
+                  <span id='enter_button'>ENTER</span>
+                </a>
             </div>
         </div>
+        <script src="{{ asset('js/app.js') }}"></script>
+        <script>
+          $('#film_button_container').on('mousedown',function(){
+            $('#film_button_container').css('text-shadow','0px 0px 0px #000');
+          });
+          $('#film_button_container').on('mouseleave',function(){
+            $('#film_button_container').css('text-shadow','15px 15px 15px #000');
+          });
+          $('#film_button_container').on('mouseenter',function(){
+            $('#film_button_container').css('text-shadow','5px 5px 5px #000');
+          });
+        </script>
     </body>
 </html>
