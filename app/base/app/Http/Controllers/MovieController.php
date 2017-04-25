@@ -52,6 +52,7 @@ class MovieController extends Controller
       $movie->Year = $request->Year;
       $movie->Rating = $request->Rating;
       $movie->save();
+      session()->flash('message',"Added Movie: {$movie->Title} ({$movie->Year})");
       return redirect('movie');
     }
 
@@ -105,7 +106,7 @@ class MovieController extends Controller
       $movie->Year = $request->Year;
       $movie->Rating = $request->Rating;
       $movie->save();
-      session()->flash('message','Your changes have been saved');
+      session()->flash('message',"Your changes to \"{$movie->Title} ({$movie->Year})\" have been saved");
       return redirect('movie');
     }
 
@@ -118,5 +119,8 @@ class MovieController extends Controller
     public function destroy($id)
     {
         $movie = Movie::find($id);
+        $movie->delete();
+        session()->flash('message',"Deleted Movie: {$movie->Title} ({$movie->Year})");
+        return redirect('/movie');
     }
 }

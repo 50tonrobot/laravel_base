@@ -7,7 +7,7 @@
     <div class='well'>{{ session()->get('message') }}</div>
   @endif
 @if (!empty($movies))
-<h1>My Movies</h1>
+<h1>My Movies <a href='/movie/create' class='btn btn-sm btn-info pull-right'>Add Movie</a></h1>
 <ul class='movies-list list-group'>
 @foreach ($movies as $movie)
   <li class='list-group-item editable' data-movie-id='{{ $movie->id }}'>
@@ -15,9 +15,9 @@
       <span class='movie-title'>{{$movie->Title}}</span>
       <span class='movie-title'>({{$movie->Year}})</span>
     </a>
-    <span id='boom' style="float:right" class="glyphicon glyphicon-trash" data-movie-id="{{$movie->id}}"></span>
+    <span class="glyphicon glyphicon-trash pull-right" data-movie-id="{{$movie->id}}" onclick="this.submit();"></span>
     <a href="/movie/{{$movie->id}}/edit">
-      <span style="float:right" class="glyphicon glyphicon-pencil"></span>
+      <span class="glyphicon glyphicon-pencil pull-right"></span>
     </a>
   </li>
 @endforeach
@@ -26,11 +26,16 @@
 <div>You have no Movies in your collection, yet.</div>
 @endif
 </div>
+<form id="delete_form" method="post">
+  {{ method_field('delete') }}
+  {{ csrf_field() }}
+</form>
 @endsection
 @section('pageJS')
 <script>
 $('span.glyphicon-trash').on('click',function(){
-  console.log($(this).data('movie-id'));
+  $("#delete_form").attr("action", "/movie/" + $(this).data('movie-id'));
+  $("#delete_form").submit();
 });
 </script>
 @endsection

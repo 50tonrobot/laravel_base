@@ -3,7 +3,7 @@
 @section('content')
 <div class='movie-form form-group well col-lg-4 col-lg-offset-4'>
   <form method='post' action='/movie/@yield("id")'>
-    <h4>@yield('mode', 'Add') Movie</h4>
+    <h1>@yield('mode', 'Add') Movie <a href='/movie' class='btn btn-sm btn-info pull-right'>Back</a></h1>
     {{ csrf_field() }}
     @yield('putMethod','')
     <input name='Title' type='text' class='form-control' placeholder='Title' value='@yield("Title")' />
