@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Movie;
 
 class MovieController extends Controller
@@ -45,7 +46,7 @@ class MovieController extends Controller
       ]);
       //creates a movie record
       $movie = new Movie;
-      $movie->user_id = 1;
+      $movie->user_id = Auth::id();
       $movie->Title = $request->Title;
       $movie->Format = $request->Format;
       $movie->Length = $request->Length;
@@ -99,7 +100,7 @@ class MovieController extends Controller
       ]);
       //creates a movie record
       $movie = Movie::find($id);
-      $movie->user_id = 1;
+      $movie->user_id = Auth::id();
       $movie->Title = $request->Title;
       $movie->Format = $request->Format;
       $movie->Length = $request->Length;
