@@ -8,10 +8,16 @@
 <ul class='movies-list list-group'>
 @foreach ($movies as $movie)
   <li class='list-group-item editable' data-movie-id='{{ $movie->id }}'>
-    <span class='movie-title'>{{$movie->Title}}</span>
-    <span class='movie-title'>{{$movie->Year}}</span>
-    <span style="float:right" class="glyphicon glyphicon-trash" data-movie-id="{{ $movie->id }}"></span>
-    <span style="float:right" class="glyphicon glyphicon-pencil" data-movie-id="{{ $movie->id }}"></span>
+    <a href="/movie/{{$movie->id}}">
+      <span class='movie-title'>{{$movie->Title}}</span>
+      <span class='movie-title'>({{$movie->Year}})</span>
+    </a>
+    <a href="/movie/{{$movie->id}}">
+      <span style="float:right" class="glyphicon glyphicon-trash"></span>
+    </a>
+    <a href="/movie/{{$movie->id}}/edit">
+      <span style="float:right" class="glyphicon glyphicon-pencil"></span>
+    </a>
   </li>
 @endforeach
 </ul>

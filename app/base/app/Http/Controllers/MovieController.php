@@ -52,7 +52,7 @@ class MovieController extends Controller
       $movie->Year = $request->Year;
       $movie->Rating = $request->Rating;
       $movie->save();
-      //return redirect('movie');
+      return redirect('movie');
     }
 
     /**
@@ -76,7 +76,8 @@ class MovieController extends Controller
      */
     public function edit($id)
     {
-        //
+        $movie = Movie::find($id);
+        return view('movie.edit',compact('movie'));
     }
 
     /**
@@ -88,7 +89,23 @@ class MovieController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request,[
+        'Title' => 'required',
+        'Format'=> 'required',
+        'Length'=> 'integer',
+        'Year'  => 'integer',
+        'Rating'=> 'integer',
+      ]);
+      //creates a movie record
+      $movie = Movie::find($id);
+      $movie->user_id = 1;
+      $movie->Title = $request->Title;
+      $movie->Format = $request->Format;
+      $movie->Length = $request->Length;
+      $movie->Year = $request->Year;
+      $movie->Rating = $request->Rating;
+      $movie->save();
+      return redirect('movie');
     }
 
     /**
