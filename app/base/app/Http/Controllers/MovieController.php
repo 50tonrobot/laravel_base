@@ -13,9 +13,9 @@ class MovieController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $movies = Movie::paginate(2);//
+        $movies = Movie::paginate($request->limit ?? 50);//
         return view('movie.home',['movies'=>$movies]);
     }
 
