@@ -37,7 +37,7 @@
 
                     <!-- Branding Image -->
                     <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+                        <i id='film_button' class="glyphicon glyphicon-film"></i>
                     </a>
                 </div>
 
