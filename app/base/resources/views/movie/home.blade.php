@@ -27,8 +27,8 @@
 @endif
 </div>
 @endsection
-@section('content')
-<script type='text/javascript'>
+@section('pageJS')
+<script>
 $('span.glyphicon-trash').on('click',function(){
   console.log($(this).data('movie-id'));
 });
