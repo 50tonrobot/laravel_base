@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class='movie-form form-group well col-lg-4 col-lg-offset-4'>
+<div class='movie-form form-group well col-lg-8 col-lg-offset-2 col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2'>
   <form method='post' action='/movie/@yield("id")'>
     <h1>@yield('mode', 'Add') Movie <a href='/movie' class='btn btn-sm btn-info pull-right'>Back</a></h1>
     {{ csrf_field() }}
