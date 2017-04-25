@@ -24,5 +24,6 @@
     <div style='clear:both;'></div>
     <button class='btn btn-primary' type='submit'>Save Movie</button>
   </form>
+  @include('movie.partials.error')
 </div>
 @endsection

@@ -105,6 +105,7 @@ class MovieController extends Controller
       $movie->Year = $request->Year;
       $movie->Rating = $request->Rating;
       $movie->save();
+      session()->flash('message','Your changes have been saved');
       return redirect('movie');
     }
 
@@ -116,6 +117,6 @@ class MovieController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $movie = Movie::find($id);
     }
 }
