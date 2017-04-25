@@ -9,6 +9,8 @@ mv composer.phar /usr/local/bin/composer;
 #rm -rf /app/base/.env.example
 #mv /home/env /app/base/.env
 cd /app/base
+composer update
+composer install
 php artisan key:generate
 #php artisan make:auth
 php artisan migrate
