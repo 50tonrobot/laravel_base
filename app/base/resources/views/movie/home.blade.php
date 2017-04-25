@@ -22,6 +22,7 @@
   </li>
 @endforeach
 </ul>
+{!! $movies->links() !!}
 @else
 <div>You have no Movies in your collection, yet.</div>
 @endif
