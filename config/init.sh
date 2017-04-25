@@ -6,8 +6,8 @@ php -r "unlink('composer-setup.php');";
 mv composer.phar /usr/local/bin/composer;
 #cd /app
 #composer create-project --prefer-dist laravel/laravel base --no-plugins --no-scripts;
-#rm -rf /app/base/.env.example
-#mv /home/env /app/base/.env
+rm -rf /app/base/.env.example
+mv /home/env /app/base/.env
 cd /app/base
 composer update
 composer install

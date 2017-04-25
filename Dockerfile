@@ -2,7 +2,7 @@ FROM php:7.1
 ENV \
   APP_DIR="/app/base" \
   APP_PORT="80"
-ADD ./app/. /app
+COPY ./app/. /app
 COPY config/php.ini /usr/local/etc/php
 
 RUN apt-get update && apt-get install -y \
@@ -17,7 +17,7 @@ RUN apt-get update && apt-get install -y \
 #    && docker-php-ext-enable memcached \
     && docker-php-ext-install mysqli \
     && docker-php-ext-install pdo_mysql
-#COPY config/env /home/env
+COPY config/env /home/env
 COPY config/init.sh /usr/local/bin/init.sh
 COPY config/wait-for-mysql.sh /usr/local/bin/wait-for-mysql.sh
 RUN chmod +x /usr/local/bin/init.sh \
