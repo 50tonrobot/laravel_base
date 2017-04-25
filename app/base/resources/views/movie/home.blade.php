@@ -14,6 +14,7 @@
         <a href="/movie/{{$movie->id}}">
           <span class='movie-title'>{{$movie->Title}}</span>
           <span class='movie-title'>({{$movie->Year}})</span>
+          <span class='movie-title'>({{$movie->Rating}})</span>
         </a>
         <span class="glyphicon glyphicon-trash pull-right" data-movie-id="{{$movie->id}}" onclick="this.submit();"></span>
         <a href="/movie/{{$movie->id}}/edit">

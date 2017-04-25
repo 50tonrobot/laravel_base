@@ -15,7 +15,8 @@ class MovieController extends Controller
      */
     public function index(Request $request)
     {
-        $movies = Movie::paginate($request->limit ?? 50);//
+        $movies = Movie::orderBy($request->sortField ?? 'updated_at',$request->sortDirection ?? 'DESC')
+                        ->paginate($request->limit ?? 50);//
         return view('movie.home',['movies'=>$movies]);
     }
 
