@@ -21,4 +21,13 @@ class Movie extends Model
             $builder->where('user_id', '=', Auth::id());
         });
     }
+
+    public function lengthToString()
+    {
+        $zero = new \DateTime('2000-01-01');
+        $zeroPlusLength = new \DateTime('2000-01-01');
+        $zeroPlusLength->add(new \DateInterval('PT'.$this->Length.'M'));
+        $interval = $zero->diff($zeroPlusLength);
+        return $interval->format('%h hr %I m');
+    }
 }

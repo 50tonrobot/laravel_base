@@ -6,7 +6,7 @@
     <h5 class="movie-title-label">Title</h5>
     <div><label for="Year">Year:&nbsp;</label><span id="Year">{{ $movie->Year }}</span></div>
     <div><label for="Rating">Rating:&nbsp;</label><span id="Rating">{{ $movie->Rating }}</span></div>
-    <div><label for="Length">Length:&nbsp;</label><span id="Length">{{ $movie->Length }}</span></div>
+    <div><label for="Length">Length:&nbsp;</label><span id="Length">{{ $movie->lengthToString() }}</span></div>
     <div><label for="Format">Format:&nbsp;</label><span id="Format">{{ $movie->Format }}</span></div>
   </div>
 @endsection
