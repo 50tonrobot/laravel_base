@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="col-md-6 col-md-offset-2 col-sm-10 col-sm-offset-1 col-xs-12 container conatiner-fluid">
+<div class="col-md-6 col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 container conatiner-fluid">
   <div class='row movie-form form-group well'>
     <form method='post' action='/movie/@yield("id")'>
       <h1>@yield('mode', 'Add') Movie <a href='/movie' class='btn btn-sm btn-info pull-right'>Back</a></h1>
