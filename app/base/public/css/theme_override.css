@@ -1,3 +1,16 @@
 body {
   background: url('../images/old_vhs_stack.jpeg');
 }
+
+/**
+ * fixes zoom issue with mobile devices
+ * additionally the font-size looks good
+ * on larger devices as well.
+ */
+input[type="email"],
+input[type="password"],
+input[type="number"],
+input[type="text"]
+{
+  font-size: 16px;
+}
