@@ -28,7 +28,7 @@ class FacebookController extends Controller
         try {
           $user = Socialite::driver('facebook')->user();
         } catch (Exception $e) {
-          return redirect ('login/facebook');
+          return redirect()->route('facebook.login');
         }
 
         $authUser = $this->findOrCreateUser($user);
