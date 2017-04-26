@@ -18,3 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::resource('/movie','MovieController');
+
+Route::get('login/facebook', 'FacebookController@redirectToProvider')->name('facebook.login');
+Route::get('login/facebook/callback', 'FacebookController@handleProviderCallback');
