@@ -24,10 +24,10 @@
 @foreach ($movies as $movie)
         <tr data-movie-id='{{ $movie->id }}'>
           <td><a href="/movie/{{$movie->id}}"><span class='movie-title'>{{$movie->Title}}</span></a></td>
-          <td><span class='movie-title'>({{$movie->Year}})</span></td>
-          <td class="hidden-xs"><span class='movie-title'>({{$movie->Rating}})</span></td>
-          <td class="hidden-xs hidden-sm"><span class='movie-title'>({{$movie->Length}})</span></td>
-          <td class="hidden-xs hidden-sm"><span class='movie-title'>({{$movie->Format}})</span></td>
+          <td><span class='movie-title'>{{$movie->Year}}</span></td>
+          <td class="hidden-xs"><span class='movie-title'>{{$movie->Rating}}</span></td>
+          <td class="hidden-xs hidden-sm"><span class='movie-title'>{{$movie->Length}}</span></td>
+          <td class="hidden-xs hidden-sm"><span class='movie-title'>{{$movie->Format}}</span></td>
           <td><a href="/movie/{{$movie->id}}/edit" class="btn"><span class="glyphicon glyphicon-pencil"></span></a></td>
           <td><span class="glyphicon glyphicon-trash btn" data-movie-id="{{$movie->id}}"></span></td>
         </tr>

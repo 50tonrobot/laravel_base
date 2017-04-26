@@ -10,12 +10,18 @@
       <input name='Title' type='text' class='form-control' placeholder='Title' value='@yield("Title")' />
       <input name='Length' type='number' class='form-control' placeholder='Length' value='@yield("Length")' />
       <input name='Year' type='number' class='form-control' placeholder='Release Year' value='@yield("Year")' />
-      <label class="checkbox-inline"><input name="Rating" type='radio' value='1' @yield("Rating1","")/>1</label>
-      <label class="checkbox-inline"><input name="Rating" type='radio' value='2' @yield("Rating2","")/>2</label>
-      <label class="checkbox-inline"><input name="Rating" type='radio' value='3' @yield("Rating3","")/>3</label>
-      <label class="checkbox-inline"><input name="Rating" type='radio' value='4' @yield("Rating4","")/>4</label>
-      <label class="checkbox-inline"><input name="Rating" type='radio' value='5' @yield("Rating5","")/>5</label>
+      <fieldset>
+        <label>Rating:</label>
+        <span class="star-cb-group">
+          <input class='rating' type="radio" id="rating-1" name="Rating" value="1" @yield("Rating1","") /><label for="rating-1">1</label>
+          <input class='rating' type="radio" id="rating-2" name="Rating" value="2" @yield("Rating2","") /><label for="rating-2">2</label>
+          <input class='rating' type="radio" id="rating-3" name="Rating" value="3" @yield("Rating3","") /><label for="rating-3">3</label>
+          <input class='rating' type="radio" id="rating-4" name="Rating" value="4" @yield("Rating4","") /><label for="rating-4">4</label>
+          <input class='rating' type="radio" id="rating-5" name="Rating" value="5" @yield("Rating5","") /><label for="rating-5">5</label>
+        </span>
+      </fieldset>
       <div>
+        <label>Format:</label>
         <select name='Format'>
           <option value="VHS" @yield("FormatVHS","")>VHS</option>
           <option value="DVD" @yield("FormatDVD","")>DVD</option>
@@ -28,4 +34,16 @@
     @include('movie.partials.error')
   </div>
 </div>
+@endsection
+
+@section('pageJS')
+<script>
+var logID = 'log',
+  log = $('<div id="'+logID+'"></div>');
+$('body').append(log);
+  $('[type*="radio"]').change(function () {
+    var me = $(this);
+    log.html(me.attr('value'));
+  });
+</script>
 @endsection

@@ -14,3 +14,12 @@ input[type="text"]
 {
   font-size: 16px;
 }
+
+span.star-cb-group input[type=radio]
+{
+  margin: 5px;
+}
+
+select[name="Format"] {
+  margin:10px 0px;
+}
