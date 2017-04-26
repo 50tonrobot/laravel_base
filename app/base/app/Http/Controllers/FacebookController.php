@@ -39,7 +39,7 @@ class FacebookController extends Controller
 
     private function findOrCreateUser($facebookUser)
     {
-        $authUser = User::where(facebook_id, $facebookUser->id)->first();
+        $authUser = User::where('facebook_id', $facebookUser->id)->first();
 
         if($authUser) {
           return $authUser;
