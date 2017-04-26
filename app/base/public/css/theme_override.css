@@ -15,15 +15,13 @@ input[type="text"]
   font-size: 16px;
 }
 
+/*overrides overly tight radio button spacing from app.css*/
 span.star-cb-group input[type=radio]
 {
   margin: 5px;
 }
 
-select[name="Format"] {
-  margin:10px 0px;
-}
-
+/* movie.show aligns title lable under movie title */
 .movie-title-label {
     margin: -10px 0 20px 0;
     font-style: italic;

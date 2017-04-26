@@ -7,10 +7,19 @@
       <h1>@yield('mode', 'Add') Movie <a href='/movie' class='btn btn-sm btn-info pull-right'>Back</a></h1>
       {{ csrf_field() }}
       @yield('putMethod','')
-      <input name='Title' type='text' class='form-control' placeholder='Title' value='@yield("Title")' />
-      <input name='Length' type='number' class='form-control' placeholder='Length' value='@yield("Length")' />
-      <input name='Year' type='number' class='form-control' placeholder='Release Year' value='@yield("Year")' />
-      <fieldset>
+      <div class='form-group'>
+        <label for='Title'>Title</label>
+        <input id='Title' name='Title' type='text' class='form-control' value='@yield("Title")' />
+      </div>
+      <div class='form-group'>
+        <label for='Length'>Length</label>
+        <input id='Length' name='Length' type='number' class='form-control' value='@yield("Length")' />
+      </div>
+      <div class='form-group'>
+        <label for='Year'>Year</label>
+        <input id='Year' name='Year' type='number' class='form-control' value='@yield("Year")' />
+      </div>
+      <fieldset class="form-group">
         <label>Rating:</label>
         <span class="star-cb-group">
           <input class='rating' type="radio" id="rating-1" name="Rating" value="1" @yield("Rating1","") /><label for="rating-1">1</label>
@@ -20,7 +29,7 @@
           <input class='rating' type="radio" id="rating-5" name="Rating" value="5" @yield("Rating5","") /><label for="rating-5">5</label>
         </span>
       </fieldset>
-      <div>
+      <div class='form-group'>
         <label>Format:</label>
         <select name='Format'>
           <option value="VHS" @yield("FormatVHS","")>VHS</option>
