@@ -34,7 +34,7 @@ class FacebookController extends Controller
         $authUser = $this->findOrCreateUser($user);
         Auth::login($authUser,true);
 
-        return redirect()->route('movies');
+        return redirect()->route('movie.index');
     }
 
     private function findOrCreateUser($facebookUser)
