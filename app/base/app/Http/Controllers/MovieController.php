@@ -40,11 +40,17 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
+      $validator->after(function ($validator) {
+          if ($this->somethingElseIsInvalid()) {
+              $validator->errors()->add('field', 'Something is wrong with this field!');
+          }
+      });
+
       $this->validate($request,[
-        'Title' => 'required',
+        'Title' => 'required|max:50',
         'Format'=> 'required',
-        'Length'=> 'integer',
-        'Year'  => 'integer',
+        'Length'=> 'integer|min:0|max:500',
+        'Year'  => 'integer|min:1800|max:2100',
         'Rating'=> 'integer',
       ]);
       //creates a movie record
@@ -95,10 +101,10 @@ class MovieController extends Controller
     public function update(Request $request, $id)
     {
       $this->validate($request,[
-        'Title' => 'required',
+        'Title' => 'required|max:50',
         'Format'=> 'required',
-        'Length'=> 'integer',
-        'Year'  => 'integer',
+        'Length'=> 'integer|min:0|max:500',
+        'Year'  => 'integer|min:1800|max:2100',
         'Rating'=> 'integer',
       ]);
       //creates a movie record
