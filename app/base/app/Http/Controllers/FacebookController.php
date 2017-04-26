@@ -48,6 +48,7 @@ class FacebookController extends Controller
         return User::create([
           'name'=>$facebookUser->name,
           'email'=>$facebookUser->email,
+          'password'=>str_random(40),
           'facebook_id'=>$facebookUser->id
         ]);
     }
