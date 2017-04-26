@@ -40,12 +40,6 @@ class MovieController extends Controller
      */
     public function store(Request $request)
     {
-      $validator->after(function ($validator) {
-          if ($this->somethingElseIsInvalid()) {
-              $validator->errors()->add('field', 'Something is wrong with this field!');
-          }
-      });
-
       $this->validate($request,[
         'Title' => 'required|max:50',
         'Format'=> 'required',
