@@ -57,6 +57,15 @@
                             </a>
                         </div>
                     </div>
+                    <div class="form-group">
+                        <div class="col-md-8 col-md-offset-4">
+                            <h3>- or -</h3>
+                            <h3>Login Services</h3>
+                        </div>
+                        <div class="col-md-8 col-md-offset-4">
+                            <a href="{{ route('facebook.login') }}" class="btn btn-primary">FB</a>
+                        </div>
+                    </div>
                 </form>
             </div>
         </div>
