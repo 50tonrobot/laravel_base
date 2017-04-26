@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Laravel\Socialite\Facades\Socialite;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
 
 class FacebookController extends Controller
 {
@@ -27,7 +27,7 @@ class FacebookController extends Controller
     public function handleProviderCallback()
     {
         try {
-          $user = Socialite::driver('facebook')->user();
+          $user = Socialite::with('facebook')->user();
         } catch (Exception $e) {
           return redirect()->route('facebook.login');
         }
@@ -42,15 +42,27 @@ class FacebookController extends Controller
     {
         $authUser = User::where('facebook_id', $facebookUser->id)->first();
 
-        if($authUser) {
+        if(!$authUser)
+        {
+          $existingUser = User::where('email',$facebookUser->email)->first();
+
+          if($existingUser)
+          {
+            $existingUser->facebook_id = $facebookUser->id;
+            $existingUser->save();
+            return $existingUser;
+          }
+          else
+          {
+            return User::create([
+              'name'=>$facebookUser->name,
+              'email'=>$facebookUser->email,
+              'password'=>str_random(40),
+              'facebook_id'=>$facebookUser->id
+            ]);
+          }
+        } else {
           return $authUser;
         }
-
-        return User::create([
-          'name'=>$facebookUser->name,
-          'email'=>$facebookUser->email,
-          'password'=>str_random(40),
-          'facebook_id'=>$facebookUser->id
-        ]);
     }
 }
