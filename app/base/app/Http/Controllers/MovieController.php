@@ -17,7 +17,9 @@ class MovieController extends Controller
     {
         $movies = Movie::orderBy($request->sortField ?? 'updated_at',$request->sortDirection ?? 'DESC')
                         ->paginate($request->limit ?? 50);//
-        return view('movie.home',['movies'=>$movies]);
+        return view('movie.home',['movies'=>$movies,
+                                  'sortDirection'=>$request->sortDirection,
+                                  'sortField'=>$request->sortField]);
     }
 
     /**

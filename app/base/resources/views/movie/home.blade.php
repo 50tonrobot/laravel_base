@@ -7,6 +7,22 @@
   @endif
   <h1>My Movies <a href='/movie/create' class='btn btn-sm btn-info pull-right'>Add Movie</a></h1>
 @if ($movies->total())
+  <div>
+    <label for="sort_form">Sort By: {{ $sortField }}</label>
+    <form id='sort_form' name='sort_form' action="/movie" method="get">
+      <select name="sortField" onchange="this.form.submit();">
+        <option value='Title'  {{ ($sortField == 'Title')  ? 'selected':null }}>Title</option>
+        <option value='Year'   {{ ($sortField == 'Year')   ? 'selected':null }}>Year</option>
+        <option value='Rating' {{ ($sortField == 'Rating') ? 'selected':null }}>Rating</option>
+        <option value='Length' {{ ($sortField == 'Length') ? 'selected':null }}>Length</option>
+        <option value='Format' {{ ($sortField == 'Format') ? 'selected':null }}>Format</option>
+      </select>
+      <select name="sortDirection" onchange="this.form.submit();">
+        <option value="DESC" {{ ($sortDirection == "DESC") ? 'selected':null }}>Desc</option>
+        <option value="ASC"  {{ ($sortDirection == "ASC")  ? 'selected':null }}>Asc</option>
+      </select>
+    </form>
+  </div>
   <div class="table-responsive">
     <table data-toggle="table" class="table">
       <thead>
