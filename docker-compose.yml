@@ -1,7 +1,9 @@
 version: '2'
 services:
   demo:
-    build: .
+    build:
+      context: .
+      dockerfile: Dockerfile-app
     depends_on:
       - mysql
     command: ["/usr/local/bin/wait-for-mysql.sh", "laravel_mysql", "/usr/local/bin/init.sh"]
@@ -21,8 +23,3 @@ services:
       MYSQL_DATABASE: laravel_app
       MYSQL_USER: laravel_app_user
       MYSQL_PASSWORD: JGx05CWMKBmCWit7xfZjbrkYlMwX1b2F
-#  memcache:
-#    container_name: sstest_memcache
-#    image: memcached
-#    ports:
-#      - "11211:11211"

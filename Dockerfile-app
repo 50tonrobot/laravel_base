@@ -1,0 +1,11 @@
+FROM laravel-ready:1
+ENV \
+  APP_DIR="/app/base" \
+  APP_PORT="80"
+COPY ./app/. /app
+COPY config/php.ini /usr/local/etc/php
+COPY config/env /home/env
+COPY config/init.sh /usr/local/bin/init.sh
+COPY config/wait-for-mysql.sh /usr/local/bin/wait-for-mysql.sh
+RUN chmod +x /usr/local/bin/init.sh \
+   && chmod +x /usr/local/bin/wait-for-mysql.sh
